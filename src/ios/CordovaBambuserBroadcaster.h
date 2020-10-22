@@ -10,6 +10,7 @@
 - (void) hideViewfinder: (CDVInvokedUrlCommand*) command;
 - (void) setCustomData: (CDVInvokedUrlCommand*) command;
 - (void) setSendPosition: (CDVInvokedUrlCommand*) command;
+- (void) setSaveOnServer:(CDVInvokedUrlCommand *)command;
 - (void) setTitle: (CDVInvokedUrlCommand*) command;
 - (void) setAuthor: (CDVInvokedUrlCommand*) command;
 - (void) startBroadcast: (CDVInvokedUrlCommand*) command;
@@ -17,6 +18,7 @@
 - (void) switchCamera: (CDVInvokedUrlCommand*) command;
 - (void) onConnectionError: (CDVInvokedUrlCommand*) command;
 - (void) onConnectionStatusChange: (CDVInvokedUrlCommand*) command;
+- (void) onBroadcastIdAvailable: (CDVInvokedUrlCommand*) command;
 - (void) onOrientationChange: (CDVInvokedUrlCommand*) command;
 - (void) toggleTorchLight: (CDVInvokedUrlCommand*) command;
 
@@ -24,5 +26,6 @@
 - (void) bambuserError: (enum BambuserError)errorCode message:(NSString*)errorMessage;
 - (void) broadcastStarted;
 - (void) broadcastStopped;
+- (void) broadcastIdReceived: (NSString *) broadcastId;
 
 @end
