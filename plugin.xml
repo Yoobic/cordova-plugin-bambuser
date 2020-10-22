@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-bambuser" version="0.9.8">
+        id="cordova-plugin-bambuser" version="0.9.13">
     <name>Bambuser Mobile SDK</name>
     <description>Cordova plugin for Bambuser Mobile SDK</description>
     <keywords>cordova,bambuser,camera</keywords>
@@ -18,9 +18,6 @@
             <uses-permission android:name="android.permission.WAKE_LOCK"/>
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
             <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-            <uses-feature android:name="android.hardware.camera.any" android:required="true" />
-            <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
-            <uses-feature android:name="android.hardware.camera.front" android:required="false" />
         </config-file>
         <config-file target="config.xml" parent="/*">
             <feature name="CordovaBambuserBroadcaster">
@@ -34,7 +31,7 @@
         <source-file src="src/android/CordovaBambuserBroadcaster.java" target-dir="src/com/bambuser/cordova" />
         <source-file src="src/android/CordovaBambuserPlayer.java" target-dir="src/com/bambuser/cordova" />
         <!-- the npm postinstall hook in package.json downloads and unzips the sdk -->
-        <resource-file src="libbambuser-android-0.9.17-190319/libbambuser-0.9.17.aar" target="libbambuser/libbambuser-0.9.17.aar" />
+        <resource-file src="libbambuser-android-0.9.21-200424/libbambuser-0.9.21.aar" target="libbambuser/libbambuser-0.9.21.aar" />
         <framework src="src/android/libbambuser.gradle" custom="true" type="gradleReference" />
     </platform>
     <platform name="ios">
@@ -53,13 +50,13 @@
         <header-file src="src/ios/CordovaBambuserPlayer.h" />
         <source-file src="src/ios/CordovaBambuserPlayer.m" />
         <!-- the npm postinstall hook in package.json downloads and unzips the sdk -->
-        <header-file src="libbambuser-ios-0.9.23-190516/prebuilt/include/BambuserConstants.h" target-dir="libbambuser-ios/prebuilt/include" />
-        <header-file src="libbambuser-ios-0.9.23-190516/prebuilt/include/BambuserViewDelegate.h" target-dir="libbambuser-ios/prebuilt/include"/>
-        <header-file src="libbambuser-ios-0.9.23-190516/prebuilt/include/libbambuser.h" target-dir="libbambuser-ios/prebuilt/include" />
-        <header-file src="libbambuser-ios-0.9.23-190516/prebuilt/include/libbambuserplayer.h" target-dir="libbambuser-ios/prebuilt/include" />
-        <header-file src="libbambuser-ios-0.9.23-190516/prebuilt/include/libbambuserplayer-constants.h" target-dir="libbambuser-ios/prebuilt/include" />
-        <source-file src="libbambuser-ios-0.9.23-190516/prebuilt/lib/libbambuser.a" framework="true" target-dir="libbambuser-ios/prebuilt/lib" />
-        <source-file src="libbambuser-ios-0.9.23-190516/prebuilt/lib/libbambuserplayer.a" framework="true" target-dir="libbambuser-ios/prebuilt/lib" />
+        <header-file src="libbambuser-ios-0.9.28-200428/prebuilt/include/BambuserConstants.h" target-dir="libbambuser-ios/prebuilt/include" />
+        <header-file src="libbambuser-ios-0.9.28-200428/prebuilt/include/BambuserViewDelegate.h" target-dir="libbambuser-ios/prebuilt/include"/>
+        <header-file src="libbambuser-ios-0.9.28-200428/prebuilt/include/libbambuser.h" target-dir="libbambuser-ios/prebuilt/include" />
+        <header-file src="libbambuser-ios-0.9.28-200428/prebuilt/include/libbambuserplayer.h" target-dir="libbambuser-ios/prebuilt/include" />
+        <header-file src="libbambuser-ios-0.9.28-200428/prebuilt/include/libbambuserplayer-constants.h" target-dir="libbambuser-ios/prebuilt/include" />
+        <source-file src="libbambuser-ios-0.9.28-200428/prebuilt/lib/libbambuser.a" framework="true" target-dir="libbambuser-ios/prebuilt/lib" />
+        <source-file src="libbambuser-ios-0.9.28-200428/prebuilt/lib/libbambuserplayer.a" framework="true" target-dir="libbambuser-ios/prebuilt/lib" />
         <framework src="libz.tbd" />
         <framework src="libc++.tbd" />
         <framework src="AudioToolbox.framework" />
@@ -67,6 +64,7 @@
         <framework src="CoreGraphics.framework" />
         <framework src="CoreLocation.framework" />
         <framework src="CoreMedia.framework" />
+        <framework src="CoreTelephony.framework" />
         <framework src="CoreVideo.framework" />
         <framework src="Foundation.framework" />
         <framework src="QuartzCore.framework" />

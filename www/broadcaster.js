@@ -8,7 +8,7 @@ var queue = Promise.resolve();
 var execQueue = function() {
     var execArgs = Array.prototype.slice.call(arguments);
     queue = queue.then(function() {
-        return new Promise(resolve => {
+        return new Promise(function(resolve) {
             var userCb = execArgs.shift();
             var userEb = execArgs.shift();
             execArgs.unshift(function() {
@@ -133,6 +133,19 @@ Broadcaster.setAuthor = function(author, successCallback, errorCallback) {
         return res;
     }
     execQueue(successCallback, errorCallback, 'CordovaBambuserBroadcaster', 'setAuthor', [author]);
+    return res;
+}
+
+Broadcaster.setSaveOnServer = function (saveOnServer, successCallback, errorCallback) {
+    var res;
+    if (!successCallback) {
+        res = new Promise(function (resolve, reject) { successCallback = resolve; errorCallback = reject; });
+    }
+    if (!Broadcaster._applicationIdSet) {
+        errorCallback('applicationId must be set first');
+        return res;
+    }
+    execQueue(successCallback, errorCallback, 'CordovaBambuserBroadcaster', 'setSaveOnServer', [saveOnServer]);
     return res;
 }
 
@@ -292,6 +305,14 @@ Broadcaster._ensureSubscribed = function() {
     }, function(e) {
         console.log('BambuserBroadcaster: failed to subscribe to onConnectionStatusChange', e);
     }, 'CordovaBambuserBroadcaster', 'onConnectionStatusChange', []);
+
+    exec(function(status) {
+        console.log('broadcastIdAvailable: ' + status);
+        Broadcaster._emitEvent('broadcastIdAvailable', status);
+    }, function(e) {
+        console.log('BambuserBroadcaster: failed to subscribe to onBroadcastIdAvailable', e);
+    }, 'CordovaBambuserBroadcaster', 'onBroadcastIdAvailable', []);
+
 };
 
 window.addEventListener("orientationchange", function() {
