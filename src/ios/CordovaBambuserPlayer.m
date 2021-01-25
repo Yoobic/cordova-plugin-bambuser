@@ -39,6 +39,7 @@
         if (audioVolume != nil) {
             bambuserPlayer.volume = [audioVolume floatValue];
         }
+        bambuserPlayer.videoScaleMode = VideoScaleAspectFit;
         [self.webView.superview insertSubview: bambuserPlayer belowSubview:self.webView];
     }
     [self setPlayerDimensions];
