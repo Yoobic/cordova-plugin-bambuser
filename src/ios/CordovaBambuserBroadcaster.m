@@ -51,6 +51,7 @@
     self.webView.backgroundColor = originalBackgroundColor;
     if (bambuserView != nil) {
         [bambuserView.view removeFromSuperview];
+        bambuserView = nil;
     }
     [self.commandDelegate sendPluginResult: [CDVPluginResult resultWithStatus:CDVCommandStatus_OK] callbackId: command.callbackId];
 }
