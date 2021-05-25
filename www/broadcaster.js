@@ -46,6 +46,12 @@ Broadcaster.setApplicationId = function(applicationId, successCallback, errorCal
     return res;
 }
 
+Broadcaster.releaseCamera = function(successCallback, errorCallback) {
+    var res;
+    Broadcaster._applicationIdSet = false;
+    execQueue(successCallback, errorCallback, 'CordovaBambuserBroadcaster', 'releaseCamera', []);
+    return res;
+}
 
 Broadcaster.showViewfinderBehindWebView = function(successCallback, errorCallback) {
     var res;
