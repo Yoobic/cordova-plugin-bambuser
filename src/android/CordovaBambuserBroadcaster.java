@@ -294,6 +294,10 @@ public class CordovaBambuserBroadcaster extends CordovaPlugin implements Broadca
             return true;
         }
 
+        if ("releaseCamera ".equals(action)) {
+            return true;
+        }
+
         return false;
     }
 
